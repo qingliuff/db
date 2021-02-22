@@ -1,0 +1,77 @@
+<% layout('./layouts/boilerplate')%>
+<% layout('./layouts/mdbootstrap')%>
+<div class="row">
+    <div class="col-6 offset-3">
+        <form action="/movies/<%=movie._id%>?_method=PUT" method="POST" novalidate class="validated-form container" enctype = "multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="movie[title]" value = "<%= movie.title %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="director">Director</label>
+                <input class="form-control" type="text" id="director" name="movie[director]" value = "<%= movie.director %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="stars">Stars</label>
+                <input class="form-control" type="text" id="stars" name="movie[stars]" value = "<%= movie.stars %>" required> 
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="year">Year</label>
+                <input class="form-control" type="text" id="stars" name="movie[year]" value = "<%= movie.year %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="rating">Rating</label>
+                    <div class="range">
+                        <input type="range" class="form-range" id="rating"  name = "movie[rating]" value = "<%= movie.rating %>"required>
+                    </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="img">Add Images</label>
+                <input type="file" name="image" id="image"  multiple > 
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Reasons for recommendation</label>
+                <textarea class="form-control" type="text" id="description" name="movie[description]" required>
+                    <%= movie.description %>
+                </textarea>
+            </div>
+            <div class="mb-3">
+                <% movie.img.forEach(function (img,i){ %>
+                    <img src="<%= img.url%>" class = "img-thumbnail"alt="">
+                    <div class="form-check-inline">
+                        <input type="checkbox" id = "img-<%= i %>" name="deleteImages[]" value = "<%= img.filename %>"%>>
+                    </div>
+                    <label for="img-<%= i %>"> Delete? </label>
+                <% }) %>
+            </div>
+           
+            <div class="mb-3">
+                <button class="btn btn-success">Update!</button>
+            </div>
+        </form>
+        <a href="/movies">All Movies/TV shows</a>
+    </div>
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>

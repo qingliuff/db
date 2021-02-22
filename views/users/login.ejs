@@ -1,0 +1,71 @@
+<% layout('./layouts/boilerplate')%>
+<% layout('./layouts/mdbootstrap')%>
+<div class="container ">
+  <div class="row">
+  <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+    <div class="card shadow">
+      <div class="card-body" style="padding-bottom: 10px;">
+        <img src="https://res.cloudinary.com/drqkvaebn/image/upload/v1613966864/QMDb/WechatIMG73_qqqah1.jpg" alt="" class = "card-img-top">
+        <form action="/login" method="POST" class="validated-form container"  novalidate>
+          <div class="mb-3">
+              <label class="form-label" for="username">Username</label>
+              <input class="form-control" type="text" id="username" name="username" required>
+          </div>
+          <div class="mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input class="form-control" type="password" id="password" name="password" required>
+          </div>
+      
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+      <form>
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>or sign up with:</p>
+            <button type="button" class="btn btn-primary btn-floating mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+        
+            <button type="button" class="btn btn-primary btn-floating mx-1">
+              <i class="fab fa-google"></i>
+            </button>
+        
+            <button type="button" class="btn btn-primary btn-floating mx-1">
+              <i class="fab fa-twitter"></i>
+            </button>
+        
+            <button type="button" class="btn btn-primary btn-floating mx-1">
+              <i class="fab fa-github"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>

@@ -1,0 +1,242 @@
+<% layout('./layouts/boilerplate')%>
+<% layout('./layouts/mdbootstrap')%>
+<% var array = [] %>
+<% for (let movie of movies){ %>
+    <% array.push(movie)  %>
+<% }%>
+<%const len = array.length%>
+<%var start = 0;%>
+<%while(start < len){%>
+    <% var sub = [];%>
+    <%if(start + 3 < len){%></len>
+        <%   sub = array.slice(start,start+3);%>
+        <%}else{%>
+            <%    sub = array.slice(start,len);%>
+        <%}%>
+            <%if(sub.length === 3){%>
+                <div class="row row-cols-1 row-cols-md-3 g-4" >
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                        <img
+                            src="<%= sub[0].img[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= sub[0].title%></h5>
+                            <p class="card-text">
+                                <%= sub[0].description%>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-film"></i>&nbsp<%=sub[0].director%></li>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i></i></i>&nbsp<%=sub[0].stars%></li>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i></i>&nbsp<%=sub[0].year%></li>
+                            <% if(sub[0].rating >= 80){ %>
+                                <li class="list-group-item"><i class="far fa-kiss-wink-heart"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>
+                            <% if(sub[0].rating < 80 && sub[0].rating >= 60){ %>
+                                <li class="list-group-item"><i class="far fa-smile"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>
+                            <% if(sub[0].rating < 60){ %>
+                                <li class="list-group-item"><i class="far fa-frown"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>  
+                        </ul>
+                        <div class="card-body">
+                            <a href="/movies/<%= sub[0].id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                            >Details</a
+                          >
+                          </div>
+                        
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                        <img
+                            src="<%= sub[1].img[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= sub[1].title%></h5>
+                            <p class="card-text">
+                                <%= sub[1].description%>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-film"></i>&nbsp<%=sub[1].director%></li>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i></i></i>&nbsp<%=sub[1].stars%></li>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i></i>&nbsp<%=sub[1].year%></li>
+                            <% if(sub[1].rating >= 80){ %>
+                                <li class="list-group-item"><i class="far fa-kiss-wink-heart"></i>&nbsp<%=sub[1].rating%></li>
+                            <% } %>
+                            <% if(sub[1].rating < 80 && sub[1].rating >= 60){ %>
+                                <li class="list-group-item"><i class="far fa-smile"></i>&nbsp<%=sub[1].rating%></li>
+                            <% } %>
+                            <% if(sub[1].rating < 60){ %>
+                                <li class="list-group-item"><i class="far fa-frown"></i>&nbsp<%=sub[1].rating%></li>
+                            <% } %>  
+                        </ul>
+                        <div class="card-body">
+                            <a href="/movies/<%= sub[1].id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                                >Details</a
+                              >
+                          </div>
+                       
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                        <img
+                            src="<%= sub[2].img[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= sub[2].title%></h5>
+                            <p class="card-text">
+                                <%= sub[2].description%>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-film"></i>&nbsp<%=sub[2].director%></li>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i></i></i>&nbsp<%=sub[2].stars%></li>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i></i>&nbsp<%=sub[2].year%></li>
+                            <% if(sub[2].rating >= 80){ %>
+                                <li class="list-group-item"><i class="far fa-kiss-wink-heart"></i>&nbsp<%=sub[2].rating%></li>
+                            <% } %>
+                            <% if(sub[2].rating < 80 && sub[2].rating >= 60){ %>
+                                <li class="list-group-item"><i class="far fa-smile"></i>&nbsp<%=sub[2].rating%></li>
+                            <% } %>
+                            <% if(sub[2].rating < 60){ %>
+                                <li class="list-group-item"><i class="far fa-frown"></i>&nbsp<%=sub[2].rating%></li>
+                            <% } %>  
+                        </ul>
+                        <div class="card-body">
+                            <a href="/movies/<%= sub[2].id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                                >Details</a
+                              >
+                          </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+            <%if(sub.length === 2){%>
+                <div class="row row-cols-1 row-cols-md-3 g-4" >
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                        <img
+                            src="<%= sub[0].img[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body ">
+                            <h5 class="card-title"><%= sub[0].title%></h5>
+                            <p class="card-text">
+                                <%= sub[0].description%>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-film"></i>&nbsp<%=sub[0].director%></li>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i></i></i>&nbsp<%=sub[0].stars%></li>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i></i>&nbsp<%=sub[0].year%></li>
+                            <% if(sub[0].rating >= 80){ %>
+                                <li class="list-group-item"><i class="far fa-kiss-wink-heart"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>
+                            <% if(sub[0].rating < 80 && sub[0].rating >= 60){ %>
+                                <li class="list-group-item"><i class="far fa-smile"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>
+                            <% if(sub[0].rating < 60){ %>
+                                <li class="list-group-item"><i class="far fa-frown"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>  
+                        </ul>
+                        <div class="card-body">
+                            <a href="/movies/<%= sub[0].id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                                >Details</a
+                              >
+                          </div>
+                        
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                        <img
+                            src="<%= sub[1].img[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= sub[1].title%></h5>
+                            <p class="card-text">
+                                <%= sub[1].description%>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-film"></i>&nbsp<%=sub[1].director%></li>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i></i></i>&nbsp<%=sub[1].stars%></li>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i></i>&nbsp<%=sub[1].year%></li>
+                            <% if(sub[1].rating >= 80){ %>
+                                <li class="list-group-item"><i class="far fa-kiss-wink-heart"></i>&nbsp<%=sub[1].rating%></li>
+                            <% } %>
+                            <% if(sub[1].rating < 80 && sub[1].rating >= 60){ %>
+                                <li class="list-group-item"><i class="far fa-smile"></i>&nbsp<%=sub[1].rating%></li>
+                            <% } %>
+                            <% if(sub[1].rating < 60){ %>
+                                <li class="list-group-item"><i class="far fa-frown"></i>&nbsp<%=sub[1].rating%></li>
+                            <% } %>  
+                        </ul>
+                        <div class="card-body">
+                            <a href="/movies/<%= sub[1].id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                                >Details</a
+                              >
+                          </div>
+                       
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+            <%if(sub.length === 1){%>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                        <img
+                            src="<%= sub[0].img[0].url %>"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= sub[0].title%></h5>
+                            <p class="card-text">
+                                <%= sub[0].description%>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-film"></i>&nbsp<%=sub[0].director%></li>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i></i></i>&nbsp<%=sub[0].stars%></li>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i></i>&nbsp<%=sub[0].year%></li>
+                            <% if(sub[0].rating >= 80){ %>
+                                <li class="list-group-item"><i class="far fa-kiss-wink-heart"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>
+                            <% if(sub[0].rating < 80 && sub[0].rating >= 60){ %>
+                                <li class="list-group-item"><i class="far fa-smile"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>
+                            <% if(sub[0].rating < 60){ %>
+                                <li class="list-group-item"><i class="far fa-frown"></i>&nbsp<%=sub[0].rating%></li>
+                            <% } %>  
+                        </ul>
+                        <div class="card-body">
+                            <a href="/movies/<%= sub[0].id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                                >Details</a
+                              >
+                          </div>
+                       
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+            
+            
+    <% start = start + 3;%>
+    <%}%>
+    
